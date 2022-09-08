@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { NestjsFormDataModule } from 'nestjs-form-data';
 import { UserController } from './users/user.controllers';
 import { User } from './users/user.entity';
 import { UserService } from './users/user.service';
@@ -17,7 +18,8 @@ import { UserService } from './users/user.service';
       synchronize: true
 
     }),
-    TypeOrmModule.forFeature([User])
+    TypeOrmModule.forFeature([User]),
+    NestjsFormDataModule
 
   ],
   controllers: [UserController],

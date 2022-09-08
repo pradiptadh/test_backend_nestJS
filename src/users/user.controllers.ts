@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Delete, HttpCode, HttpStatus, Param, Post, UseFilters } from "@nestjs/common";
 import { CreateUserDto } from "./create-user.dto";
+import { FormDataRequest } from 'nestjs-form-data';
 import { EntityNotFoundExceptionFilter } from "./entity-not-found-exception.filter";
 import { UserService } from "./user.service";
 
@@ -23,6 +24,7 @@ export class UserController {
     }
 
     @Post()
+    @FormDataRequest()
     async create(@Body() data: CreateUserDto) {
         return {
             data: await this.userService.create(data)
